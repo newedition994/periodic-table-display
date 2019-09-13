@@ -1,14 +1,31 @@
 import React, { Component } from "react";
-import { GridList, GridTile } from "material-ui/GridList";
-import IconButton from "material-ui/IconButton";
-import ZoomIn from "material-ui/svg-icons/action/zoom-in";
-import Dialog from "material-ui/Dialog";
-import FlatButton from "material-ui/FlatButton";
+
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+
+import axios from "axios";
 
 class Element extends Component {
   state = {
     mouseover: false,
     currentEl: ""
+  };
+
+  componentDidMount = () => {
+    axios
+      .get(`https://neelpatel05.pythonanywhere.com/`)
+      .then(res => console.log(res.data))
+      .then(data =>
+        this.setState({ currentEl: data }, () => {
+          console.log(data);
+          return { data };
+        })
+      )
+      .catch(err => console.log(err));
   };
 
   handleOver = el => {
@@ -20,44 +37,18 @@ class Element extends Component {
   };
 
   render() {
-    let periodicTableContent;
-    const { elements } = this.props;
-
-    periodicTableContent = (
-      <GridList col={9}>
-        {elements.map(el => (
-          <GridTile
-            name={el.symbol}
-            key={el.id}
-            subtitle={<strong>{el.name}</strong>}
-            actionIcon={
-              <IconButton onMouseOver={() => this.handleOver(el.meltingPoint)}>
-                <ZoomIn color="white" />
-              </IconButton>
-            }
-          >
-            <img src={el.symbol} alt="" />
-          </GridTile>
-        ))}
-      </GridList>
-    );
-
-    const actions = [
-      <FlatButton
-        label="Close"
-        primary={true}
-        onMouseOver={this.handleNotOver}
-      />
-    ];
     return (
       <div>
-        {periodicTableContent}
-        <Dialog
-          actions={actions}
-          modal={false}
-          mouseover={this.state.mouseover}
-          onMouseOver={this.handleNotOver}
-        ></Dialog>
+        <Paper>
+          <Table size="small">
+            <TableHead>
+              <TableRow></TableRow>
+            </TableHead>
+            <TableBody>
+              <TableCell></TableCell>
+            </TableBody>
+          </Table>
+        </Paper>
       </div>
     );
   }
