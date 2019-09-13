@@ -27,7 +27,6 @@ class PeriodicTable extends Component {
     const filteredElements = this.showElementInfo();
     return (
       <div className="ElementContainer">
-        <h1>Period Table</h1>
         {filteredElements.map(element => (
           <Element key={element.atomicNumber} element={element} />
         ))}
