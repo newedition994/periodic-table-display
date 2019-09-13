@@ -23,8 +23,36 @@ export default class PeriodicTable extends Component {
     let periodicTableContent;
     const { elements } = this.props;
 
+    periodicTableContent = (
+      <GridList col={9}>
+        {elements.map(el => (
+          <GridTile
+            name={el.symbol}
+            key={el.id}
+            subtitle={<strong>{el.name}</strong>}
+            actionIcon={
+              <IconButton onMouseOver={() => this.handleOver(el.meltingPoint)}>
+                <ZoomIn color="white" />
+              </IconButton>
+            }
+          >
+            <img src={el.symbol} alt="" />
+          </GridTile>
+        ))}
+      </GridList>
+    );
+
+    const actions = [
+      <FlatButton
+        label="Close"
+        primary={true}
+        onMouseOver={this.handleNotOver}
+      />
+    ];
+
     return (
       <div>
+        {periodicTableContent}
         <Dialog
           actions={actions}
           modal={false}
