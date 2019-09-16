@@ -8,6 +8,12 @@ class PeriodicTable extends Component {
     elements: []
   };
 
+  hoverOver = () => {
+    const width = this.refs.ElementContainer.clientWidth;
+    const height = this.refs.ElementContainer.clientHeight;
+    console.log("New width: " + width + " and the height: " + height);
+  };
+
   componentDidMount = () => {
     axios
       .get(`https://neelpatel05.pythonanywhere.com/`)
@@ -23,13 +29,23 @@ class PeriodicTable extends Component {
     return this.state.elements.filter(element => element.name.toUpperCase());
   };
 
+  hoverOver = () => {
+    const width = this.refs.ElementContainer.clientWidth;
+    const height = this.refs.ElementContainer.clientHeight;
+    console.log(width, height);
+  };
+
   render() {
     const filteredElements = this.showElementInfo();
 
     return (
       <div className="ElementContainer">
         {filteredElements.map(element => (
-          <Element key={element.atomicNumber} element={element} />
+          <Element
+            key={element.atomicNumber}
+            element={element}
+            onMouseMove={this.hoverOver}
+          />
         ))}
       </div>
     );
