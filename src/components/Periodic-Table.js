@@ -30,22 +30,16 @@ class PeriodicTable extends Component {
   };
 
   hoverOver = () => {
-    const width = this.refs.ElementContainer.clientWidth;
-    const height = this.refs.ElementContainer.clientHeight;
-    console.log(width, height);
+    console.log("this is hovering over");
   };
 
   render() {
     const filteredElements = this.showElementInfo();
 
     return (
-      <div className="ElementContainer">
+      <div className="ElementContainer" onMouseMove={this.hoverOver}>
         {filteredElements.map(element => (
-          <Element
-            key={element.atomicNumber}
-            element={element}
-            onMouseMove={this.hoverOver}
-          />
+          <Element key={element.atomicNumber} element={element} />
         ))}
       </div>
     );
