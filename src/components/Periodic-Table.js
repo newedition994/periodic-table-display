@@ -25,6 +25,7 @@ class PeriodicTable extends Component {
 
   render() {
     const filteredElements = this.showElementInfo();
+
     return (
       <div className="ElementContainer">
         {filteredElements.map(element => (
