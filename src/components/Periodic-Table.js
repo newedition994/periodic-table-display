@@ -29,8 +29,26 @@ class PeriodicTable extends Component {
     return this.state.elements.filter(element => element.name.toUpperCase());
   };
 
-  hoverOver = () => {
-    console.log("this is hovering over");
+  hoverOver = element => {
+    // console.log("this is hovering over");
+    var elementInfo = element.atomicMass;
+
+    switch (elementInfo) {
+      case 0:
+        elementInfo = element.radius;
+        break;
+      case 1:
+        elementInfo = element.electronegativity;
+        break;
+      case 2:
+        elementInfo = elementInfo.meltingPoint;
+        break;
+      case 3:
+        elementInfo = element.bondingType;
+        break;
+      default:
+        console.log("This is some element info " + element);
+    }
   };
 
   render() {
