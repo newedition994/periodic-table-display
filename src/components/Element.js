@@ -12,11 +12,12 @@ function useHover() {
 
   useEffect(() => {
     // ref.current.addEventListener does not work need a new function
-    ref.current.addEventLister("mouseenter", enter);
-    ref.current.addEventLister("mouseleave", leave);
+    var current = ref.current;
+    current.addEventListener("mouseenter", enter);
+    current.addEventListener("mouseleave", leave);
     return () => {
-      ref.current.removeEventLister("mouseenter", enter);
-      ref.current.removeEventLister("mouseleave", leave);
+      current.removeEventListener("mouseenter", enter);
+      current.removeEventListener("mouseleave", leave);
     };
   }, [ref]);
 

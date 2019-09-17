@@ -2,7 +2,6 @@ import React from "react";
 
 const HoverOver = ({ element }) => (
   <div className="ElementCard">
-    <h1>{element.atomicNumber}</h1>
     <p>The atomic radius is {element.atomicRadius}</p>
     <p>The boiling point is {element.boilingPoint}</p>
     <p>The standard state is {element.standardState}</p>
