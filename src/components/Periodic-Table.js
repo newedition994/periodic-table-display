@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+
 import axios from "axios";
 
 import Element from "./Element";
+//import HoverOver from "./HoverOver";
 
 class PeriodicTable extends Component {
   state = {
@@ -22,14 +24,6 @@ class PeriodicTable extends Component {
 
   showElementInfo = elements => {
     return this.state.elements.filter(element => element.name.toUpperCase());
-  };
-
-  showElementRadius = elements => {
-    return this.state.elements.filter(element => element.atomicRadius);
-  };
-
-  hoverOver = ({ element }) => {
-    console.log(this.showElementInfo(element));
   };
 
   render() {
