@@ -8,16 +8,11 @@ class PeriodicTable extends Component {
     elements: []
   };
 
-  hoverOver = () => {
-    const width = this.refs.ElementContainer.clientWidth;
-    const height = this.refs.ElementContainer.clientHeight;
-    console.log("New width: " + width + " and the height: " + height);
-  };
-
   componentDidMount = () => {
     axios
       .get(`https://neelpatel05.pythonanywhere.com/`)
       .then(res => {
+        //console.log(res.data);
         this.setState({
           elements: res.data
         });
@@ -30,7 +25,6 @@ class PeriodicTable extends Component {
   };
 
   hoverOver = element => {
-    // console.log("this is hovering over");
     var elementInfo = element.atomicMass;
 
     switch (elementInfo) {
@@ -47,7 +41,7 @@ class PeriodicTable extends Component {
         elementInfo = element.bondingType;
         break;
       default:
-        console.log("This is some element info " + element);
+        console.log(elementInfo);
     }
   };
 
