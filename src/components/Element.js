@@ -11,6 +11,7 @@ function useHover() {
   const leave = () => setHovered(false);
 
   useEffect(() => {
+    // ref.current.addEventListener does not work need a new function
     ref.current.addEventLister("mouseenter", enter);
     ref.current.addEventLister("mouseleave", leave);
     return () => {
@@ -21,6 +22,9 @@ function useHover() {
 
   return [ref, hovered];
 }
+
+// The following is to help with ref.current errors
+// look into https://stackoverflow.com/questions/39310754/react-addeventlistener-is-not-a-function-error
 
 function Element({ element }) {
   const [ref, hovered] = useHover();
