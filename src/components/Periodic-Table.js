@@ -25,23 +25,24 @@ class PeriodicTable extends Component {
   };
 
   hoverOver = element => {
-    var elementInfo = element.atomicMass;
+    let elementInfo = "";
 
-    switch (elementInfo) {
+    let randomNumber = Math.floor(Math.random() * 4);
+    switch (randomNumber) {
       case 0:
-        elementInfo = element.radius;
-        break;
+        return (elementInfo = element.atomicRadius);
+      //break;
       case 1:
-        elementInfo = element.electronegativity;
-        break;
+        return (elementInfo = element.electronegativity);
+      //break;
       case 2:
-        elementInfo = elementInfo.meltingPoint;
-        break;
+        return (elementInfo = elementInfo.meltingPoint);
+      //break;
       case 3:
-        elementInfo = element.bondingType;
-        break;
+        return (elementInfo = element.bondingType);
+      //break;
       default:
-        console.log(elementInfo);
+        return element.name;
     }
   };
 
