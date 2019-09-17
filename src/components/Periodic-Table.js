@@ -24,7 +24,12 @@ class PeriodicTable extends Component {
     return this.state.elements.filter(element => element.name.toUpperCase());
   };
 
+  // showElementRadius = elements => {
+  //   return this.state.elements.filter(element => element.yearDiscovered);
+  // };
+
   hoverOver = ({ element }) => {
+    // console.log(this.showElementRadius(element));
     // let elementInfo = this.state.elements;
     // alert(elementInfo);
     // switch (elementInfo) {
