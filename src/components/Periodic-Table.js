@@ -24,30 +24,12 @@ class PeriodicTable extends Component {
     return this.state.elements.filter(element => element.name.toUpperCase());
   };
 
-  // showElementRadius = elements => {
-  //   return this.state.elements.filter(element => element.yearDiscovered);
-  // };
+  showElementRadius = elements => {
+    return this.state.elements.filter(element => element.atomicRadius);
+  };
 
   hoverOver = ({ element }) => {
-    // console.log(this.showElementRadius(element));
-    // let elementInfo = this.state.elements;
-    // alert(elementInfo);
-    // switch (elementInfo) {
-    //   case 0:
-    //     elementInfo = element.atomicRadius;
-    //     break;
-    //   case 1:
-    //     elementInfo = element.electronegativity;
-    //     break;
-    //   case 2:
-    //     elementInfo = elementInfo.meltingPoint;
-    //     break;
-    //   case 3:
-    //     elementInfo = element.bondingType;
-    //     break;
-    //   default:
-    //     return element.name;
-    // }
+    console.log(this.showElementInfo(element));
   };
 
   render() {
