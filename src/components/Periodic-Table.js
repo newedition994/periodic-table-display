@@ -31,6 +31,10 @@ class PeriodicTable extends Component {
 
     return (
       <div className="ElementContainer" onMouseMove={this.hoverOver}>
+        <p>
+          The api used for element info is from:
+          https://neelpatel05.pythonanywhere.com/
+        </p>
         {filteredElements.map(element => (
           <Element key={element.atomicNumber} element={element} />
         ))}
