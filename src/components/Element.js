@@ -25,6 +25,21 @@ function useHover() {
 function Element({ element }) {
   const [ref, hovered] = useHover();
 
+  // function renderSwitch(element) {
+  //   switch(element) {
+  //     case 0:
+  //       return <p>The atomic radius is <strong>{element.atomicRadius}</strong></p>
+  //     case 1:
+  //       return <p>The boiling point is <strong>{element.boilingPoint}</strong></p>
+  //     case 2:
+  //       return <p>The standard state is <strong>{element.standardState}</strong></p>
+  //     case 3:
+  //       return <p>It was discovered in <strong>{element.yearDiscovered}</strong></p>
+  //     default:
+  //       return element.name;
+  //   }
+  // }
+
   return (
     <div className="ElementCard" ref={ref}>
       <h4>{element.atomicNumber}</h4>
