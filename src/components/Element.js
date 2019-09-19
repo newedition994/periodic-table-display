@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import HoverOver from "./HoverOver";
+//import HoverOver from "./HoverOver";
 
-// Tried to use React Hooks to get the hover to work
 // React Hooks only work in functional components
 function useHover() {
   const ref = useRef();
@@ -11,7 +10,6 @@ function useHover() {
   const leave = () => setHovered(false);
 
   useEffect(() => {
-    // ref.current.addEventListener does not work need a new function
     var current = ref.current;
     current.addEventListener("mouseenter", enter);
     current.addEventListener("mouseleave", leave);
@@ -24,9 +22,6 @@ function useHover() {
   return [ref, hovered];
 }
 
-// The following is to help with ref.current errors
-// look into https://stackoverflow.com/questions/39310754/react-addeventlistener-is-not-a-function-error
-
 function Element({ element }) {
   const [ref, hovered] = useHover();
 
@@ -35,7 +30,22 @@ function Element({ element }) {
       <h4>{element.atomicNumber}</h4>
       <h1>{element.symbol}</h1>
       <h3>{element.name}</h3>
-      {hovered && <HoverOver />}
+      {hovered && (
+        <div>
+          <p>
+            The atomic radius is <strong>{element.atomicRadius}</strong>
+          </p>
+          <p>
+            The boiling point is <strong>{element.boilingPoint}</strong>
+          </p>
+          <p>
+            The standard state is <strong>{element.standardState}</strong>
+          </p>
+          <p>
+            It was discovered in <strong>{element.yearDiscovered}</strong>
+          </p>
+        </div>
+      )}
     </div>
   );
 }
